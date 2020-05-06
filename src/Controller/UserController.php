@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/user", name="user_")
+ * @Route("/users", name="user_")
  */
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="index", methods={"GET"})
+     * @Route("/browse", name="index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
     {
@@ -26,7 +26,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="new", methods={"GET","POST"})
+     * @Route("/add", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,10 +49,11 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="show", methods={"GET"})
+     * @Route("/read/{id}", name="show", methods={"GET"})
      */
     public function show(User $user): Response
     {
+
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);
@@ -79,7 +80,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {

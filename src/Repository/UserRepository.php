@@ -19,6 +19,18 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+
+    public function findByPostalCode($postalCode)
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.user', 'u')
+            ->where('u.postalCode = :postalCode')
+            ->setParameter('postalCode', $postalCode)
+            ->orderBy('s.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

@@ -17,7 +17,7 @@ class UserType extends AbstractType
             ->add('email')
             ->add('birthdate')
             ->add('activity', null, [
-                'expanded' => true,
+                'expanded' => false,
             ])
         ;
     }

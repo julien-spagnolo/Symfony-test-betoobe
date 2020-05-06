@@ -21,11 +21,9 @@ easy_admin:
       list:
         fields:
           - email
-          - { property: 'roles', type: array }
           - firstname
           - lastname
           - isBlocked
-          # - { property: 'activity', type: array }
     Activity:
       class: App\Entity\Activity
       label: 'Activité'
