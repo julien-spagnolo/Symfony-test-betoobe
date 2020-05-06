@@ -18,7 +18,7 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=40)
      */
     private $firstName;
 
@@ -40,12 +40,12 @@ class User
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isBlocked;
+    private $isBlocked = true;
 
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private $roles = ["ROLE_USER"];
 
     /**
      * @ORM\ManyToOne(targetEntity=Activity::class, inversedBy="users")
@@ -139,5 +139,10 @@ class User
         $this->activity = $activity;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->firstName;
     }
 }

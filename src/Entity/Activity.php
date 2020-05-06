@@ -45,13 +45,18 @@ class Activity
     private $maximumPeople;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="activities")
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="activity")
      */
     private $users;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -131,7 +136,7 @@ class Activity
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->setActivities($this);
+            $user->setActivity($this);
         }
 
         return $this;
@@ -142,8 +147,8 @@ class Activity
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
             // set the owning side to null (unless already changed)
-            if ($user->getActivities() === $this) {
-                $user->setActivities(null);
+            if ($user->getActivity() === $this) {
+                $user->setActivity(null);
             }
         }
 
