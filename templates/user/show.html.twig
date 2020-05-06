@@ -1,9 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-  User
-{% endblock %}
-
 {% block body %}
   <h1>
     User
@@ -13,7 +9,7 @@
     <tbody>
       <tr>
         <th>
-          FirstName
+          Prénom
         </th>
         <td>
           {{ user.firstName }}
@@ -21,7 +17,7 @@
       </tr>
       <tr>
         <th>
-          LastName
+          Nom
         </th>
         <td>
           {{ user.lastName }}
@@ -37,7 +33,7 @@
       </tr>
       <tr>
         <th>
-          Birthdate
+          Date de naissance
         </th>
         <td>
           {{ user.birthdate ? user.birthdate|date('Y-m-d') : '' }}
@@ -45,15 +41,7 @@
       </tr>
       <tr>
         <th>
-          Birthdate
-        </th>
-        <td>
-          {{ user.birthdate ? user.birthdate|date('Y-m-d') : '' }}
-        </td>
-      </tr>
-      <tr>
-        <th>
-          Activité
+          Activité inscrite
         </th>
         <td>
           {{ user.activity ? user.activity: '' }}
