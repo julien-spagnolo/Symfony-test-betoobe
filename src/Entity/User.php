@@ -40,12 +40,12 @@ class User
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isBlocked;
+    private $isBlocked = true;
 
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private $roles = ["ROLE_USER"];
 
     /**
      * @ORM\ManyToOne(targetEntity=Activity::class, inversedBy="users")
