@@ -1,0 +1,50 @@
+easy_admin:
+  design:
+    menu:
+      - { entity: 'User', label: 'Utilisateur'}
+      - { entity: 'Activity', label: 'Activité'}
+
+
+  entities:
+    User:
+      class: App\Entity\User
+      label: 'Utilisateur'
+      form:
+        fields:
+          - email
+          - { property: roles, type: 'choice', type_options: { expanded: true, multiple: true, choices: { 'Utilisateur': 'ROLE_USER', 'Modérateur': 'ROLE_MODO', 'Administrateur': 'ROLE_ADMIN' }} }
+          - { property: firstName, label: 'Prénom' }
+          - { property: lastName, label: 'Nom' }
+          # à corriger bug connu dans le bundle easy admin pour les date en dessus de 2015.
+          - { property: birthdate, type: 'birthday', label: 'Date de naissance' }
+          - { property: 'activity'}        
+      list:
+        fields:
+          - email
+          - { property: 'roles', type: array }
+          - firstname
+          - lastname
+          - isBlocked
+          # - { property: 'activity', type: array }
+    Activity:
+      class: App\Entity\Activity
+      label: 'Activité'
+      form:
+        fields:
+          - name
+          - startAt
+          - endAt
+          - ageRequire
+          - maximumPeople
+      list:
+        fields:
+          - name
+          - startAt
+          - endAt
+          - ageRequire
+          - maximumPeople
+
+  # entities:
+  #   # List the entity class name you want to manage
+  #   - App\Entity\User
+  #   - App\Entity\Activity
